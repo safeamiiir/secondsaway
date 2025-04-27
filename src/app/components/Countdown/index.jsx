@@ -57,7 +57,11 @@ const useTimer = (unit) => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    intervalRef.current = setInterval(handleCountdown, 1000);
+    const IsPassed = new Date().getTime() > new Date(COUNTDOWN_FROM).getTime()
+    
+    if(!IsPassed) {
+      intervalRef.current = setInterval(handleCountdown, 1000);
+    }
 
     return () => clearInterval(intervalRef.current || undefined);
   }, []);
