@@ -1,5 +1,13 @@
 // import Image from "next/image";
+import dynamic from 'next/dynamic'
+
 import {ShiftingCountdown} from "./components/Countdown";
+const Location = dynamic(
+  () => import('./components/Location/index'),
+  { 
+    loading: () => <p>Loading Map...</p>,
+  }
+)
 
 export default function Home() {
   return (
@@ -10,6 +18,7 @@ export default function Home() {
           Seconds away:
         </h1>
         <ShiftingCountdown />
+        <Location />
       </div>
       // </main>
     // </div>

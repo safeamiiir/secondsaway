@@ -2,7 +2,7 @@
 
 import { useAnimate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import didarha from '../didarha.json';
+import didarha from '../../didarha.json';
 
 // NOTE: Change this date to whatever date you want to countdown to :)
 const COUNTDOWN_FROM = didarha.THIRD.time;
