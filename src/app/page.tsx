@@ -1,6 +1,5 @@
 // import Image from "next/image";
 import {ShiftingCountdown} from "./components/Countdown";
-import {Location} from "./components/Location";
 
 export default function Home() {
   return (
