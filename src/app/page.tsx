@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 
 import {ShiftingCountdown} from "./components/Countdown";
 const Location = dynamic(
-  () => import('./components/Location/index'),
+  () => import('./components/Location/LocationWrapper'),
   { 
     loading: () => <p>Loading Map...</p>,
   }
