@@ -1,0 +1,14 @@
+{
+    "FIRST": "TBD",
+    "SECOND": "TBD",
+    "THIRD": {
+        "time": "2025-04-30T04:40:00Z",
+        "location": {
+            "name": "Paris Bercy",
+            "position": [
+                48.8353952,
+                2.3805952
+            ]
+        }
+    }
+}
