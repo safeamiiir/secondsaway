@@ -26,7 +26,7 @@ export default function MapClient() {
       />
       <Marker position={location_info.position}>
         <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
+          Third didar at:<br /> {location_info.name}
         </Popup>
       </Marker>
     </MapContainer>
