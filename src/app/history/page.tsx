@@ -12,7 +12,7 @@ const Location = dynamic(
 const getPastEvents = () => {
   const now = new Date();
   return Object.entries(didarha)
-    .filter(([key, value]) => {
+    .filter(([, value]) => {
       if (typeof value !== 'object' || !value.time) return false;
       return new Date(value.time) < now;
     })
