@@ -1,6 +1,24 @@
 {
-    "FIRST": "TBD",
-    "SECOND": "TBD",
+    "FIRST": {
+        "time": "2024-09-19T19:00:00Z",
+        "location": {
+            "name": "Homme de Fer" ,
+            "position": [
+                48.583408,
+                7.745113
+            ]
+        }
+    },
+    "SECOND": {
+        "time": "2024-11-21T19:15:00Z",
+        "location": {
+            "name": "Next to the river",
+            "position": [
+                48.57393354143791,
+                7.749585358362602
+            ]
+        }
+    },
     "THIRD": {
         "time": "2025-04-30T04:40:00Z",
         "location": {

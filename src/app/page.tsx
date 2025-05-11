@@ -19,6 +19,9 @@ export default function Home() {
         </h1>
         <ShiftingCountdown />
         <Location />
+        <div className="mt-6 text-center">
+          <a href="/history" className="text-blue-500 underline text-sm">View didars history</a>
+        </div>
       </div>
       // </main>
     // </div>
