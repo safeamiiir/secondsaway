@@ -30,7 +30,7 @@ export default function MapClient({ locations, zoom }) {
       {locationList.map((loc, index) => (
         <Marker key={index} position={loc.position}>
           <Popup>
-            {loc.name}
+            {`${loc.pre_marker} ${loc.name}`}
           </Popup>
         </Marker>
       ))}

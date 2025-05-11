@@ -2,7 +2,7 @@
     "FIRST": {
         "time": "2024-09-19T18:00:00Z",
         "location": {
-            "pre_market": "First Didar at ",
+            "pre_marker": "First Didar at ",
             "name": "Homme de Fer" ,
             "position": [
                 48.583408,
@@ -13,7 +13,7 @@
     "SECOND": {
         "time": "2024-11-21T18:15:00Z",
         "location": {
-            "pre_market": "Second Didar at ",
+            "pre_marker": "Second Didar at ",
             "name": "Next to the river",
             "position": [
                 48.573983,
@@ -24,7 +24,7 @@
     "THIRD": {
         "time": "2025-04-30T04:40:00Z",
         "location": {
-            "pre_market": "Third Didar at ",
+            "pre_marker": "Third Didar at ",
             "name": "Paris Bercy",
             "position": [
                 48.8353952,
@@ -35,7 +35,7 @@
     "FOURTH": {
         "time": "2025-06-05T15:10:00Z",
         "location": {
-            "pre_market": "Fourth Didar at ",
+            "pre_marker": "Fourth Didar at ",
             "name": "Strasbourg Airport",
             "position": [
                 48.538993,
