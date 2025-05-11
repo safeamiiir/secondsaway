@@ -11,8 +11,8 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 })
 
-export default function MapClient() {
-  const location_info = didarha.FOURTH.location;
+export default function MapClient({ location }) {
+  const location_info = location || didarha.FOURTH.location;
   return (
     <MapContainer 
       center={location_info.position} 
@@ -26,7 +26,7 @@ export default function MapClient() {
       />
       <Marker position={location_info.position}>
         <Popup>
-          Fourth didar at:<br /> {location_info.name}
+          {`${location_info.pre_market} ${location_info.name}`}
         </Popup>
       </Marker>
     </MapContainer>

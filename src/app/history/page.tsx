@@ -57,7 +57,7 @@ export default function HistoryPage() {
               </button>
               {expandedMaps.includes(didar.name) && (
                 <div className="mt-4 w-full">
-                  <Location />
+                  <Location location={didar.location} />
                 </div>
               )}
             </li>
