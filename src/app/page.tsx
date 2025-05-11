@@ -1,5 +1,6 @@
 // import Image from "next/image";
 import dynamic from 'next/dynamic'
+import didarha from './didarha.json';
 
 import {ShiftingCountdown} from "./components/Countdown";
 const Location = dynamic(
@@ -18,7 +19,7 @@ export default function Home() {
           Seconds away:
         </h1>
         <ShiftingCountdown />
-        <Location />
+        <Location location={didarha.FOURTH.location} />
         <div className="mt-6 text-center">
           <a href="/history" className="text-blue-500 underline text-sm">View didars history</a>
         </div>
