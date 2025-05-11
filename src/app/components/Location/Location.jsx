@@ -12,7 +12,7 @@ L.Icon.Default.mergeOptions({
 })
 
 export default function MapClient() {
-  const location_info = didarha.THIRD.location;
+  const location_info = didarha.FOURTH.location;
   return (
     <MapContainer 
       center={location_info.position} 
@@ -26,7 +26,7 @@ export default function MapClient() {
       />
       <Marker position={location_info.position}>
         <Popup>
-          Third didar at:<br /> {location_info.name}
+          Fourth didar at:<br /> {location_info.name}
         </Popup>
       </Marker>
     </MapContainer>

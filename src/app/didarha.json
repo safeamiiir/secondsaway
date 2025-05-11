@@ -10,5 +10,15 @@
                 2.3805952
             ]
         }
+    },
+    "FOURTH": {
+        "time": "2025-06-05T15:10:00Z",
+        "location": {
+            "name": "Strasbourg Airport",
+            "position": [
+                48.538993,
+                7.6248841
+            ]
+        }
     }
 }
