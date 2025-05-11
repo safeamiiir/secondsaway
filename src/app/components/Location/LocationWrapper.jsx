@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-export default function MapWrapper({ location }) {
+export default function MapWrapper({ locations, zoom }) {
   const [ClientOnly, setClientOnly] = useState(null)
 
   useEffect(() => {
@@ -14,5 +14,5 @@ export default function MapWrapper({ location }) {
     return <div>Loading map...</div>
   }
 
-  return <ClientOnly location={location} />
+  return <ClientOnly locations={locations} zoom={zoom} />
 }

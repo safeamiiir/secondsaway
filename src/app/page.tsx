@@ -19,7 +19,7 @@ export default function Home() {
           Seconds away:
         </h1>
         <ShiftingCountdown />
-        <Location location={didarha.FOURTH.location} />
+        <Location locations={[didarha.FOURTH.location]} zoom={15}/>
         <div className="mt-6 text-center">
           <a href="/history" className="text-blue-500 underline text-sm">View didars history</a>
         </div>

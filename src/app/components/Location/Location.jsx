@@ -11,12 +11,15 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 })
 
-export default function MapClient({ location }) {
-  const location_info = location || didarha.FOURTH.location;
+export default function MapClient({ locations, zoom }) {
+  const locationList = Array.isArray(locations) ? locations : [locations || didarha.FOURTH.location];
+  const center = locationList[0]?.position || [0, 0];
+  const mapZoom = zoom === undefined ? 15 : zoom;
+
   return (
     <MapContainer 
-      center={location_info.position} 
-      zoom={15}
+      center={center} 
+      zoom={mapZoom}
       scrollWheelZoom={true}
       style={{ height: '500px', width: '100%' }}
     >
@@ -24,11 +27,13 @@ export default function MapClient({ location }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={location_info.position}>
-        <Popup>
-          {`${location_info.pre_market} ${location_info.name}`}
-        </Popup>
-      </Marker>
+      {locationList.map((loc, index) => (
+        <Marker key={index} position={loc.position}>
+          <Popup>
+            {loc.name}
+          </Popup>
+        </Marker>
+      ))}
     </MapContainer>
   )
 }

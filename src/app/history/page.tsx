@@ -38,6 +38,7 @@ export default function HistoryPage() {
   };
 
   return (
+    <>
     <div className="max-w-4xl mx-auto p-8 overflow-hidden">
       <h1 className="text-3xl font-bold mb-6">Didars History</h1>
       {pastEvents.length === 0 ? (
@@ -57,7 +58,7 @@ export default function HistoryPage() {
               </button>
               {expandedMaps.includes(didar.name) && (
                 <div className="mt-4 w-full">
-                  <Location location={didar.location} />
+                  <Location locations={[didar.location]} zoom={15} />
                 </div>
               )}
             </li>
@@ -65,5 +66,13 @@ export default function HistoryPage() {
         </ul>
       )}
     </div>
+    {pastEvents.length === 0 ? (
+        <div></div>
+      ) : (
+          <div className="mt-8">
+          <Location locations={pastEvents.map(event => event.location)} zoom={5} />
+        </div>
+      )}
+    </>
   );
 } 
