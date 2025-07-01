@@ -42,5 +42,17 @@
                 7.6248841
             ]
         }
-    }
+    },
+    "FIFTH": {
+        "time": "2025-06-05T13:50:00Z",
+        "location": {
+            "pre_marker": "Fifth Didar at ",
+            "name": "Strasbourg Airport",
+            "position": [
+                48.538993,
+                7.6248841
+            ]
+        }
+    }    
+
 }
