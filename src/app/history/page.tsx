@@ -18,7 +18,7 @@ const getPastEvents = () => {
       return new Date(value.time) < now;
     })
     .map(([key, value]) => {
-      const v = value as { time: string; location: { name: string; position: number[] } };
+      const v = value;
       return {
         name: key,
         time: v.time,
@@ -33,7 +33,7 @@ export default function HistoryPage() {
   const [expandedMaps, setExpandedMaps] = useState<string[]>([]);
 
   const toggleMap = (name: string) => {
-    setExpandedMaps(prev => 
+    setExpandedMaps(prev =>
       prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name]
     );
   };
@@ -56,7 +56,15 @@ export default function HistoryPage() {
             {pastEvents.map(didar => (
               <li key={didar.name} className="border rounded p-4 bg-white shadow overflow-hidden">
                 <div className="text-black font-semibold text-lg">{didar.location?.name}</div>
-                <div className="text-gray-700">{new Date(didar.time).toLocaleString()}</div>
+                <div className="text-gray-700">{new Date(didar.time).toLocaleString("en-GB", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}</div>
                 <div className="text-gray-500 text-sm">{didar.name}</div>
                 <button
                   onClick={() => toggleMap(didar.name)}
