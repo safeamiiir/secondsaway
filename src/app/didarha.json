@@ -3,7 +3,7 @@
         "time": "2024-09-19T18:00:00Z",
         "location": {
             "pre_marker": "First Didar at ",
-            "name": "Homme de Fer" ,
+            "name": "Homme de Fer",
             "position": [
                 48.583408,
                 7.745113
@@ -73,6 +73,17 @@
             "position": [
                 48.572055,
                 7.7457600
+            ]
+        }
+    },
+    "EIGHTH": {
+        "time": "2025-12-22T11:20:00Z",
+        "location": {
+            "pre_marker": "Eighth Didar at ",
+            "name": "Gatwick Airport",
+            "position": [
+                51.160627,
+                -0.1779973
             ]
         }
     }
