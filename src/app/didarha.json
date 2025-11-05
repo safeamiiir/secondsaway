@@ -65,4 +65,15 @@
             ]
         }
     }
+    "SEVENTH": {
+        "time": "2025-10-19T18:30:00Z",
+        "location": {
+            "pre_marker": "Seventh Didar at ",
+            "name": "Arefe's Place",
+            "position": [
+                48.572055,
+                7.7457600
+            ]
+        }
+    }
 }
