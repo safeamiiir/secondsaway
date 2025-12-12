@@ -85,9 +85,9 @@ export default function WeatherPrediction({ location, eventTime }: WeatherPredic
         <div className="w-full my-8">
             <div className="mb-4 px-4 text-center sm:text-left">
                 <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-cyan-100 pb-1">
-                    {location.name} Weather
+                    {location.name}
                 </h2>
-                <p className="text-white/60 text-sm">14-Day Forecast</p>
+                <p className="text-white/60 text-sm">Weather Forecast</p>
             </div>
 
             {/* Horizontal Slider Container */}
