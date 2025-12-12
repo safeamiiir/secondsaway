@@ -27,10 +27,10 @@ export default function WeatherPrediction({ location, eventTime }: WeatherPredic
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Always fetch forecast for the NEXT 14 days starting TODAY
+                // Fetch the maximum available forecast starting from TODAY
                 const startDate = new Date();
                 const endDate = new Date(startDate);
-                endDate.setDate(startDate.getDate() + 13); // 14 days from today
+                endDate.setDate(startDate.getDate() + 15); // Max API limit (~16 days)
 
                 const formatDate = (d: Date) => d.toISOString().split('T')[0];
 
@@ -63,6 +63,20 @@ export default function WeatherPrediction({ location, eventTime }: WeatherPredic
         fetchData();
     }, [location, eventTime]);
 
+    useEffect(() => {
+        if (!data) return;
+        const targetDate = eventTime.split('T')[0];
+
+        // Wait for entrance animations to settle slightly
+        const timer = setTimeout(() => {
+            const el = document.getElementById(`weather-card-${targetDate}`);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+            }
+        }, 800); // Delay to follow entrance animation
+        return () => clearTimeout(timer);
+    }, [data, eventTime]);
+
     if (loading) return <div className="text-center p-8 text-white/50 animate-pulse">Checking the skies...</div>;
     if (error) return <div className="text-center p-8 text-red-300">{error}</div>;
     if (!data) return null;
@@ -78,7 +92,7 @@ export default function WeatherPrediction({ location, eventTime }: WeatherPredic
 
             {/* Horizontal Slider Container */}
             <motion.div
-                className="w-full overflow-x-auto pb-6 px-4 scrollbar-hide"
+                className="w-full overflow-x-auto pb-6 px-4 scrollbar-hide snap-x"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -86,12 +100,13 @@ export default function WeatherPrediction({ location, eventTime }: WeatherPredic
                 <div className="flex gap-4 w-max min-w-full">
                     {data.time.map((dateStr, i) => {
                         const date = new Date(dateStr);
-                        const isEventDay = dateStr === eventTime.split('T')[0]; // Simple match
+                        const isEventDay = dateStr === eventTime.split('T')[0];
                         const { label, icon } = getWeatherInfo(data.weathercode[i]);
 
                         return (
                             <motion.div
                                 key={dateStr}
+                                id={`weather-card-${dateStr}`}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: i * 0.05 }}
@@ -99,11 +114,8 @@ export default function WeatherPrediction({ location, eventTime }: WeatherPredic
                   relative flex flex-col items-center justify-between
                   min-w-[140px] h-[200px] p-4 rounded-3xl
                   backdrop-blur-xl border
-                  transition-all duration-300
-                  ${isEventDay
-                                        ? 'bg-white/20 border-white/50 shadow-[0_0_30px_rgba(255,255,255,0.2)]'
-                                        : 'bg-black/10 border-white/10 hover:bg-white/10'
-                                    }
+                  transition-all duration-300 snap-start
+                  ${isEventDay ? 'bg-white/20 border-white/50 shadow-[0_0_30px_rgba(255,255,255,0.2)]' : 'bg-black/10 border-white/10 hover:bg-white/10'}
                 `}
                             >
                                 {/* Date Header */}
