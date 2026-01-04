@@ -1,6 +1,7 @@
 {
     "FIRST": {
         "time": "2024-09-19T18:00:00Z",
+        "endAt": "2024-09-23T10:25:00Z",
         "location": {
             "pre_marker": "First Didar at ",
             "name": "Homme de Fer",
@@ -12,6 +13,7 @@
     },
     "SECOND": {
         "time": "2024-11-21T18:15:00Z",
+        "endAt": "2024-11-28T09:05:00Z",
         "location": {
             "pre_marker": "Second Didar at ",
             "name": "Next to the river",
@@ -23,6 +25,7 @@
     },
     "THIRD": {
         "time": "2025-04-30T04:40:00Z",
+        "endAt": "2025-05-05T06:00:00Z",
         "location": {
             "pre_marker": "Third Didar at ",
             "name": "Paris Bercy",
@@ -34,6 +37,7 @@
     },
     "FOURTH": {
         "time": "2025-06-05T13:10:00Z",
+        "endAt": "2024-06-15T14:55:00Z",
         "location": {
             "pre_marker": "Fourth Didar at ",
             "name": "Strasbourg Airport",
@@ -45,6 +49,7 @@
     },
     "FIFTH": {
         "time": "2025-07-20T14:29:00Z",
+        "endAt": "2025-07-27T16:50:00Z",
         "location": {
             "pre_marker": "Fifth Didar at ",
             "name": "Strasbourg Airport",
@@ -56,6 +61,7 @@
     },
     "SITH": {
         "time": "2025-09-21T12:30:00Z",
+        "endAt": "2025-09-28T14:00:00Z",
         "location": {
             "pre_marker": "Sith Didar at ",
             "name": "Strasbourg Airport",
@@ -67,6 +73,7 @@
     },
     "SEVENTH": {
         "time": "2025-10-19T16:30:00Z",
+        "endAt": "2025-10-23T14:50:00Z",
         "location": {
             "pre_marker": "Seventh Didar at ",
             "name": "Arefe's Place",
@@ -78,6 +85,7 @@
     },
     "EIGHTH": {
         "time": "2025-12-22T11:20:00Z",
+        "endAt": "2025-01-04T14:00:00Z",
         "location": {
             "pre_marker": "Eighth Didar at ",
             "name": "Gatwick Airport",
@@ -86,5 +94,8 @@
                 -0.1779973
             ]
         }
+    },
+    "COMMENTS": {
+        "comment": "endAt is within the UK time I guessm not accurate"
     }
 }
