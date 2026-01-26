@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import didarha from '../../didarha.json';
 
 // NOTE: Change this date to whatever date you want to countdown to :)
-const COUNTDOWN_FROM = didarha.EIGHTH.time;
+const COUNTDOWN_FROM = didarha.NINETH.time;
 
 const SECOND = 1000;
 const MINUTE = SECOND * 60;
@@ -58,8 +58,8 @@ const useTimer = (unit) => {
 
   useEffect(() => {
     const IsPassed = new Date().getTime() > new Date(COUNTDOWN_FROM).getTime()
-    
-    if(!IsPassed) {
+
+    if (!IsPassed) {
       intervalRef.current = setInterval(handleCountdown, 1000);
     }
 
