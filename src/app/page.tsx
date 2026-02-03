@@ -17,7 +17,7 @@ export default function Home() {
     // <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
     <div>
       <h1 className="text-5xl font-extrabold text-white m-10">
-        Seconds away:
+        Seconds away from you :
       </h1>
       <ShiftingCountdown />
       <WeatherPrediction location={didarha.NINETH.location} eventTime={didarha.NINETH.time} />
