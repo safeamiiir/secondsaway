@@ -12,13 +12,13 @@ L.Icon.Default.mergeOptions({
 })
 
 export default function MapClient({ locations, zoom }) {
-  const locationList = Array.isArray(locations) ? locations : [locations || didarha.NINETH.location];
+  const locationList = Array.isArray(locations) ? locations : [locations || didarha.TENTH.location];
   const center = locationList[0]?.position || [0, 0];
   const mapZoom = zoom === undefined ? 15 : zoom;
 
   return (
-    <MapContainer 
-      center={center} 
+    <MapContainer
+      center={center}
       zoom={mapZoom}
       scrollWheelZoom={true}
       style={{ height: '500px', width: '100%' }}

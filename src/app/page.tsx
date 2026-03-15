@@ -20,8 +20,8 @@ export default function Home() {
         Seconds away from 🫵
       </h1>
       <ShiftingCountdown />
-      <WeatherPrediction location={didarha.NINETH.location} eventTime={didarha.NINETH.time} />
-      <Location locations={[didarha.NINETH.location]} zoom={15} />
+      <WeatherPrediction location={didarha.TENTH.location} eventTime={didarha.TENTH.time} />
+      <Location locations={[didarha.TENTH.location]} zoom={15} />
       <div className="mt-6 text-center">
         <a href="/history" className="text-blue-500 underline text-sm">View didars history</a>
       </div>

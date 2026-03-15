@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import didarha from '../../didarha.json';
 
 // NOTE: Change this date to whatever date you want to countdown to :)
-const COUNTDOWN_FROM = didarha.NINETH.time;
+const COUNTDOWN_FROM = didarha.TENTH.time;
 
 const SECOND = 1000;
 const MINUTE = SECOND * 60;
