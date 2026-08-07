@@ -40,6 +40,7 @@ export const ShiftingCountdown = () => {
       <FriendlyCard
         headline="We're together 🫶"
         subline="No more counting for now."
+        showToggle={false}
       />
     );
   }
@@ -53,12 +54,7 @@ export const ShiftingCountdown = () => {
       <p className="mx-auto mb-3 max-w-5xl text-center text-sm font-light text-white/70 md:text-base">
         {closeUpMessage(distance)}
       </p>
-      <div className="mx-auto flex w-full max-w-5xl items-center overflow-hidden rounded-2xl bg-white shadow-lg shadow-black/20">
-        <CountdownItem unit="Day" text="sleeps" />
-        <CountdownItem unit="Hour" text="hours" />
-        <CountdownItem unit="Minute" text="minutes" />
-        <CountdownItem unit="Second" text="seconds" />
-      </div>
+      <CountdownGrid />
     </div>
   );
 };
@@ -85,21 +81,48 @@ const FarAwayCountdown = ({ distance }) => {
   );
 };
 
-const FriendlyCard = ({ headline, subline, footnote }) => (
-  <div className="p-4">
-    <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-2 rounded-2xl bg-white px-6 py-10 text-center shadow-lg shadow-black/20 md:py-14">
-      <span className="text-3xl font-semibold text-black md:text-5xl lg:text-6xl">
-        {headline}
-      </span>
-      <span className="text-base font-light text-slate-600 md:text-xl">
-        {subline}
-      </span>
-      {footnote && (
-        <span className="mt-2 text-xs font-light uppercase tracking-widest text-slate-400 md:text-sm">
-          {footnote}
+const FriendlyCard = ({ headline, subline, footnote, showToggle = true }) => {
+  const [showExact, setShowExact] = useState(false);
+
+  return (
+    <div className="p-4">
+      <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-2 rounded-2xl bg-white px-6 py-10 text-center shadow-lg shadow-black/20 md:py-14">
+        <span className="text-3xl font-semibold text-black md:text-5xl lg:text-6xl">
+          {headline}
         </span>
+        <span className="text-base font-light text-slate-600 md:text-xl">
+          {subline}
+        </span>
+        {footnote && (
+          <span className="mt-2 text-xs font-light uppercase tracking-widest text-slate-400 md:text-sm">
+            {footnote}
+          </span>
+        )}
+      </div>
+
+      {showToggle && (
+        <div className="mx-auto mt-4 flex w-full max-w-5xl flex-col items-center gap-4">
+          <button
+            type="button"
+            onClick={() => setShowExact((open) => !open)}
+            aria-expanded={showExact}
+            className="text-sm font-light text-white/60 underline decoration-dotted underline-offset-4 transition-colors hover:text-white"
+          >
+            {showExact ? "hide the exact countdown" : "show me the exact countdown"}
+          </button>
+          {showExact && <CountdownGrid />}
+        </div>
       )}
     </div>
+  );
+};
+
+const CountdownGrid = () => (
+  <div className="mx-auto flex w-full max-w-5xl items-center overflow-hidden rounded-2xl bg-white shadow-lg shadow-black/20">
+    <CountdownItem unit="Day" text="sleeps" />
+    <CountdownItem unit="Hour" text="hours" />
+    <CountdownItem unit="Minute" text="minutes" />
+    <CountdownItem unit="Second" text="seconds" />
   </div>
 );
 
