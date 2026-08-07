@@ -1,4 +1,16 @@
 {
+    "ELEVENTH": {
+        "time": "2026-09-03T18:40:00Z",
+        "endAt": "2026-09-10T12:15:40Z",
+        "location": {
+            "pre_marker": "Eleventh Didar at ",
+            "name": "Arefe's Place",
+            "position": [
+                48.572055,
+                7.7457600
+            ]
+        }
+    },
     "TENTH": {
         "time": "2026-04-11T18:00:00Z",
         "endAt": "2026-05-03T12:15:40Z",
