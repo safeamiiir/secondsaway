@@ -7,6 +7,10 @@ import didarha from '../../didarha.json';
 // NOTE: Change this date to whatever date you want to countdown to :)
 const COUNTDOWN_FROM = didarha.ELEVENTH.time;
 
+// NOTE: Optional. Set `pause_at` on the didar to hold time still — the counter
+// ticks as normal up to that moment and then freezes there instead of moving on.
+const PAUSE_AT = didarha.ELEVENTH.pause_at ?? null;
+
 const SECOND = 1000;
 const MINUTE = SECOND * 60;
 const HOUR = MINUTE * 60;
@@ -27,6 +31,16 @@ const DAY_NAMES = [
   "Saturday",
 ];
 
+const pauseTime = PAUSE_AT ? new Date(PAUSE_AT).getTime() : null;
+
+// The clock every timer reads from: the real time, or `pause_at` once we reach it.
+const currentTime = () => {
+  const now = Date.now();
+  return pauseTime !== null && now > pauseTime ? pauseTime : now;
+};
+
+const isPaused = () => pauseTime !== null && Date.now() > pauseTime;
+
 export const ShiftingCountdown = () => {
   const distance = useDistance(COUNTDOWN_FROM);
 
@@ -35,6 +49,31 @@ export const ShiftingCountdown = () => {
     return <div className="p-4"><div className="mx-auto h-24 w-full max-w-5xl rounded-2xl bg-white/5 md:h-36" /></div>;
   }
 
+  return (
+    <>
+      <CountdownBody distance={distance} />
+      {isPaused() && <PausedNote />}
+    </>
+  );
+};
+
+const PausedNote = () => {
+  const pausedAt = new Date(pauseTime);
+
+  return (
+    <p className="mx-auto -mt-1 max-w-5xl px-4 text-center text-xs font-light text-white/50 md:text-sm">
+      ⏸ time is on hold — paused at{" "}
+      {pausedAt.toLocaleString(undefined, {
+        day: "numeric",
+        month: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+      })}
+    </p>
+  );
+};
+
+const CountdownBody = ({ distance }) => {
   if (distance <= 0) {
     return (
       <FriendlyCard
@@ -145,7 +184,7 @@ const closeUpMessage = (distance) => {
 const countSaturdaysBefore = (target) => {
   const meetDay = startOfDay(new Date(target));
 
-  const cursor = startOfDay(new Date());
+  const cursor = startOfDay(new Date(currentTime()));
   cursor.setDate(cursor.getDate() + ((6 - cursor.getDay() + 7) % 7));
 
   let count = 0;
@@ -167,10 +206,17 @@ const useDistance = (to) => {
   const [distance, setDistance] = useState(null);
 
   useEffect(() => {
-    const tick = () => setDistance(new Date(to).getTime() - Date.now());
+    const tick = () => setDistance(new Date(to).getTime() - currentTime());
 
     tick();
-    const interval = setInterval(tick, SECOND);
+
+    // Time is already held still, so there is nothing left to tick.
+    if (isPaused()) return;
+
+    const interval = setInterval(() => {
+      tick();
+      if (isPaused()) clearInterval(interval);
+    }, SECOND);
 
     return () => clearInterval(interval);
   }, [to]);
@@ -210,10 +256,12 @@ const useTimer = (unit) => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    const IsPassed = new Date().getTime() > new Date(COUNTDOWN_FROM).getTime()
+    const IsPassed = currentTime() > new Date(COUNTDOWN_FROM).getTime()
 
-    if (!IsPassed) {
-      handleCountdown();
+    handleCountdown();
+
+    // Frozen at `pause_at`, or already past the didar: the digits stay put.
+    if (!IsPassed && !isPaused()) {
       intervalRef.current = setInterval(handleCountdown, 1000);
     }
 
@@ -222,8 +270,11 @@ const useTimer = (unit) => {
 
   const handleCountdown = async () => {
     const end = new Date(COUNTDOWN_FROM);
-    const now = new Date();
-    const distance = +end - +now;
+    const distance = +end - currentTime();
+
+    if (isPaused()) {
+      clearInterval(intervalRef.current || undefined);
+    }
 
     let newTime = 0;
 
