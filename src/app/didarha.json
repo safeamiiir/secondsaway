@@ -1,4 +1,16 @@
 {
+    "TWELFTH": {
+        "time": "2026-10-17T16:00:00Z",
+        "endAt": "2026-11-02T13:10:00Z",
+        "location": {
+            "pre_marker": "Twelfth Didar at ",
+            "name": "Basel Airport",
+            "position": [
+                47.597291,
+                7.5258825
+            ]
+        }
+    },
     "ELEVENTH": {
         "time": "2026-09-10T18:40:00Z",
         "endAt": "2026-09-21T14:20:40Z",

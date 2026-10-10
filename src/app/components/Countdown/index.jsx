@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import didarha from '../../didarha.json';
 
 // NOTE: Change this date to whatever date you want to countdown to :)
-const COUNTDOWN_FROM = didarha.ELEVENTH.time;
+const COUNTDOWN_FROM = didarha.TWELFTH.time;
 
 // NOTE: Optional. Set `pause_at` on the didar to hold time still — the counter
 // ticks as normal up to that moment and then freezes there instead of moving on.
-const PAUSE_AT = didarha.ELEVENTH.pause_at ?? null;
+const PAUSE_AT = didarha.TWELFTH.pause_at ?? null;
 
 const SECOND = 1000;
 const MINUTE = SECOND * 60;

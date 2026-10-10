@@ -12,7 +12,7 @@ L.Icon.Default.mergeOptions({
 })
 
 export default function MapClient({ locations, zoom }) {
-  const locationList = Array.isArray(locations) ? locations : [locations || didarha.ELEVENTH.location];
+  const locationList = Array.isArray(locations) ? locations : [locations || didarha.TWELFTH.location];
   const center = locationList[0]?.position || [0, 0];
   const mapZoom = zoom === undefined ? 15 : zoom;
 
