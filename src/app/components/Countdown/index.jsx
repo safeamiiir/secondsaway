@@ -11,6 +11,9 @@ const COUNTDOWN_FROM = didarha.TWELFTH.time;
 // ticks as normal up to that moment and then freezes there instead of moving on.
 const PAUSE_AT = didarha.TWELFTH.pause_at ?? null;
 
+// When the didar is over; after this we're apart again, waiting for the next one.
+const END_AT = didarha.TWELFTH.endAt ?? null;
+
 const SECOND = 1000;
 const MINUTE = SECOND * 60;
 const HOUR = MINUTE * 60;
@@ -40,6 +43,10 @@ const currentTime = () => {
 };
 
 const isPaused = () => pauseTime !== null && Date.now() > pauseTime;
+
+const endTime = END_AT ? new Date(END_AT).getTime() : NaN;
+
+const isOver = () => !Number.isNaN(endTime) && currentTime() > endTime;
 
 export const ShiftingCountdown = () => {
   const distance = useDistance(COUNTDOWN_FROM);
@@ -75,6 +82,16 @@ const PausedNote = () => {
 
 const CountdownBody = ({ distance }) => {
   if (distance <= 0) {
+    if (isOver()) {
+      return (
+        <FriendlyCard
+          headline="Soon we'll see each other again 🤍"
+          subline="Until the next didar."
+          showToggle={false}
+        />
+      );
+    }
+
     return (
       <FriendlyCard
         headline="We're together 🫶"
