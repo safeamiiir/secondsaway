@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import didarha from '../didarha.json';
 import Link from 'next/link';
 
@@ -29,8 +29,16 @@ const getPastEvents = () => {
 };
 
 export default function HistoryPage() {
-  const pastEvents = getPastEvents();
+  // Built only in the browser: "now" and date formatting (locale/timezone)
+  // differ between server and client, which breaks hydration.
+  const [pastEvents, setPastEvents] = useState<ReturnType<typeof getPastEvents> | null>(null);
   const [expandedMaps, setExpandedMaps] = useState<string[]>([]);
+
+  useEffect(() => {
+    setPastEvents(getPastEvents());
+  }, []);
+
+  if (pastEvents === null) return null;
 
   const toggleMap = (name: string) => {
     setExpandedMaps(prev =>

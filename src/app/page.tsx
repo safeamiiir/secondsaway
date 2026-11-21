@@ -5,7 +5,7 @@ import didarha from './didarha.json';
 import { ShiftingCountdown } from "./components/Countdown";
 import WeatherPrediction from './components/Weather/WeatherPrediction';
 const Location = dynamic(
-  () => import('./components/Location/LocationWrapper'),
+  () => import('./components/Location/HomeMap'),
   {
     loading: () => <p>Loading Map...</p>,
   }
@@ -21,7 +21,7 @@ export default function Home() {
       </h1>
       <ShiftingCountdown />
       <WeatherPrediction location={didarha.THIRTEENTH.location} eventTime={didarha.THIRTEENTH.time} />
-      <Location locations={[didarha.THIRTEENTH.location]} zoom={15} />
+      <Location />
       <div className="mt-6 text-center">
         <a href="/history" className="text-blue-500 underline text-sm">View didars history</a>
       </div>

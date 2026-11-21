@@ -46,7 +46,7 @@ const isPaused = () => pauseTime !== null && Date.now() > pauseTime;
 
 const endTime = END_AT ? new Date(END_AT).getTime() : NaN;
 
-const isOver = () => !Number.isNaN(endTime) && currentTime() > endTime;
+export const isOver = () => !Number.isNaN(endTime) && currentTime() > endTime;
 
 export const ShiftingCountdown = () => {
   const distance = useDistance(COUNTDOWN_FROM);
